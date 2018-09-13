@@ -1,10 +1,12 @@
 {
   "name": "smart-categories",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.1",
   "description": "Support for smart categories, like a \"sale\" category that automatically contains all products that are on sale for example.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --use_strict --recursive test",
+    "cover": "nyc _mocha --use_strict --timeout 3000 --recursive ./test",
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
@@ -21,14 +23,19 @@
     }
   },
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
     "eslint": "^5.5.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-chai": "0.0.1",
     "eslint-plugin-chai-expect": "^1.1.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
     "standard": "^12.0.1"
   }
 }
