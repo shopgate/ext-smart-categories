@@ -1,5 +1,3 @@
-const chai = require('chai')
-
 const addSmartCategories = require('./../../lib/addSmartCategories')
 
 describe('addSmartCategories', async () => {
@@ -51,7 +49,7 @@ describe('addSmartCategories', async () => {
       { id: '6' },
       { id: '7' }
     ] })
-    chai.assert.deepEqual(result.categories, [
+    expect(result.categories).toEqual([
       { id: '1' },
       { id: '2' },
       {
@@ -107,6 +105,6 @@ describe('addSmartCategories', async () => {
   it('should not fail if there is no smartCategories configuration ', async () => {
     const input = { categories: [{ id: '1' }, { id: '2' }] }
     const result = await addSmartCategories({ config: {} }, input)
-    chai.assert.deepEqual(result, input)
+    expect(result).toBe(input)
   })
 })

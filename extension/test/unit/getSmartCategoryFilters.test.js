@@ -1,5 +1,3 @@
-const chai = require('chai')
-
 const getSmartCategoryFilters = require('./../../lib/getSmartCategoryFilters')
 
 describe('getSmartCategoryFilters', async () => {
@@ -42,20 +40,20 @@ describe('getSmartCategoryFilters', async () => {
   it('should remove categoryId if it corresponds to a smart category and add the corresponding filters', async () => {
     for (var i = 0; i < context.config.smartCategories.length; i++) {
       const result = await getSmartCategoryFilters(context, { categoryId: context.config.smartCategories[i].id })
-      chai.assert.isNull(result.categoryId)
-      chai.assert.deepEqual(result.filters, context.config.smartCategories[i].filters)
+      expect(result.categoryId).toBeNull()
+      expect(result.filters).toBe(context.config.smartCategories[i].filters)
     }
   })
 
   it("should pass through the categoryId if it's not a smart category ", async () => {
     const result = await getSmartCategoryFilters(context, { categoryId: 'someNonSmartCategoryId' })
-    chai.assert.deepEqual(result.categoryId, 'someNonSmartCategoryId')
-    chai.assert.isUndefined(result.filters)
+    expect(result.categoryId).toBe('someNonSmartCategoryId')
+    expect(result.filters).toBeUndefined()
   })
 
   it('should not fail if there is no smartCategories configuration ', async () => {
     let input = { categoryId: 'someId' }
     const result = await getSmartCategoryFilters({ config: {} }, input)
-    chai.assert.deepEqual(result, input)
+    expect(result).toBe(input)
   })
 })
