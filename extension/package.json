@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --use_strict --recursive test",
-    "cover": "nyc _mocha --use_strict --timeout 3000 --recursive ./test",
+    "coverage": "./node_modules/.bin/nyc npm run test && ./node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
     "lint": "standard"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-chai": "0.0.1",
