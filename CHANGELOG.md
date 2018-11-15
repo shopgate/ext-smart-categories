@@ -11,4 +11,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 - first draft implementation
 
+[Unreleased]: https://github.com/shopgate/smart-categories/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/shopgate/smart-categories/compare/v0.1.0-beta.1...v1.0.0
 [0.1.0-beta.1]: https://github.com/shopgate/smart-categories/tree/v0.1.0-beta.1
