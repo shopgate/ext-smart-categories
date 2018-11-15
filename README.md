@@ -53,7 +53,7 @@ Set the following values in your Shopgate Connect Admin:
 
 ```
 
-#### All products with the property Energieeffizienzklasse = B":
+#### All products with the property Energieeffizienzklasse = B:
 ```json
 {
   "smartCategories": [
@@ -71,7 +71,7 @@ Set the following values in your Shopgate Connect Admin:
 }
 ```
 
-#### All products under 10€":
+#### All products under 10€:
 ```json
 {
   "smartCategories": [
