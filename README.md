@@ -2,6 +2,7 @@
 
 [![GitHub license](http://dmlc.github.io/img/apache2.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/shopgate/ext-smart-categories.svg?branch=master)](https://travis-ci.org/shopgate/ext-smart-categories)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/ext-smart-categories/badge.svg?branch=master)](https://coveralls.io/github/shopgate/ext-smart-categories?branch=master)
 
 Adds support for smart categories, like a "sale" category that automatically contains all products that are on sale for example.
 
