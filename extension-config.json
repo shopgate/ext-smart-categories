@@ -1,0 +1,48 @@
+{
+  "version": "0.1.0-beta.1",
+  "id": "@shopgate/smart-categories",
+  "trusted": false,
+  "configuration": {
+    "smartCategories": {
+      "type": "admin",
+      "destination": "backend",
+      "default": [
+      ],
+      "params": {
+        "type": "textbox",
+        "label": "Smart Categories",
+        "required": false,
+        "options": {
+          "placeholder": "Example: [{\r\n  \"id\": \"smartMicrosoft\",\r\n  \"name\": \"smart: Microsoft\",\r\n  \"description\": \"All products from Microsoft\",\r\n  \"imageUrl\": \"https:\/\/www.example.com\/img\/microsoft.jpg\",\r\n  \"externalUrl\": \"https:\/\/www.example.com\/microsoft\/\",\r\n  \"filters\": {\r\n    \"Marke\": {\r\n      \"values\": [\"Microsoft\"],\r\n      \"source\": \"manufacturer\"\r\n    }\r\n  },\r\n  \"beforeId\": \"5\"\r\n}]"
+        }
+      }
+    }
+  },
+  "components": [
+  ],
+  "steps": [
+    {
+      "path": "extension/lib/addSmartCategories.js",
+      "description": "Adds the smart categories to the result of the getRootCategories pipeline.",
+      "hooks": ["shopgate.catalog.getRootCategories.v1:after"],
+      "input": [
+        { "key": "categories" }
+      ],
+      "output": [
+        { "key": "categories" }
+      ]
+    },
+    {
+      "path": "extension/lib/getSmartCategoryFilters.js",
+      "description": "If the ID of a smart category is given, gets the corresponding product IDs.",
+      "hooks": ["shopgate.catalog.getProducts.v1:before"],
+      "input": [
+        { "key": "categoryId" }
+      ],
+      "output": [
+        { "key": "categoryId" },
+        { "key": "filters" }
+      ]
+    }
+  ]
+}
