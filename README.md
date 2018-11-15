@@ -4,6 +4,89 @@
 
 Adds support for smart categories, like a "sale" category that automatically contains all products that are on sale for example.
 
+## Configuration
+
+Set the following values in your Shopgate Connect Admin:
+* `smartCategories` - (array of objects) each containing the following properties
+  * `id` - (text/number, required) Unique ID for the category.
+  * `name` - (text, required) Name of the category that will be shown to the end user.
+  * `filters` - (object, required) The filters in CloudSearch syntax.
+  * `description` - (text, optional) Not diplayed anywhere atm. Just for documentary purposes.
+  * `imageUrl` - (text, optional) Link to the category image.
+  * `externalUrl` - (text, optional)  Link to the category in the desktop shop.
+
+### Examples
+
+#### All products that are currently on sale:
+```json
+{
+  "smartCategories": [
+    {
+      "id": "Sale",
+      "name": "SALE",
+      "filters": {
+        "only_discounted": true
+      }
+    }
+  ]
+}
+```
+
+#### All products from manufacturer "Microsoft":
+```json
+{
+  "smartCategories": [
+    {
+      "id": "smartMicrosoft",
+      "name": "Microsoft",
+      "filters": {
+        "Marke": {
+          "source": "manufacturer",
+          "values": ["Microsoft"]
+        }
+      }
+    }
+  ]
+}
+
+```
+
+#### All products with the property Energieeffizienzklasse = B":
+```json
+{
+  "smartCategories": [
+    {
+      "id": "smartEnergieeffizienzklasseB",
+      "name": "Energieeffizienzklasse B",
+      "filters": {
+        "Energieeffizienzklasse": {
+          "source": "properties",
+          "values": ["B"]
+        }
+      }
+    }
+  ]
+}
+```
+
+#### All products under 10€":
+```json
+{
+  "smartCategories": [
+    {
+      "id": "smartUnder10",
+      "name": "Under 10€",
+      "filters": {
+        "display_amount": {
+          "maximum": 1000,
+          "minimum": 0
+        }
+      }
+    }
+  ]
+}
+```
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) file for more information.
