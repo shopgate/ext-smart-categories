@@ -38,6 +38,20 @@ describe('getSmartCategoryFilters', async () => {
               source: 'display_amount'
             }
           }
+        },
+        {
+          id: 'led',
+          name: 'smart: search for LED',
+          searchPhrase: 'LED'
+        },
+        {
+          id: 'productIds',
+          name: 'smart: Product IDs',
+          productIds: [
+            '9624050',
+            '6520221',
+            '6089108'
+          ]
         }
       ]
     }
@@ -48,6 +62,8 @@ describe('getSmartCategoryFilters', async () => {
       const result = await getSmartCategoryFilters(context, { categoryId: context.config.smartCategories[i].id })
       chai.assert.isNull(result.categoryId)
       chai.assert.deepEqual(result.filters, context.config.smartCategories[i].filters)
+      chai.assert.deepEqual(result.searchPhrase, context.config.smartCategories[i].searchPhrase)
+      chai.assert.deepEqual(result.productIds, context.config.smartCategories[i].productIds)
     }
   })
 
