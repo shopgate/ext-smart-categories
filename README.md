@@ -12,19 +12,39 @@ Set the following values in your Shopgate Connect Admin:
 * `smartCategories` - (array of objects) each containing the following properties
   * `id` - (text/number, required) Unique ID for the category.
   * `name` - (text, required) Name of the category that will be shown to the end user.
-  * `filters` - (object, required) The filters in CloudSearch syntax.
+  * `searchPhrase` - (text, optional) A searchPhrase to be executed when the user opens this category.
+  * `filters` - (object, optional) The filters in CloudSearch syntax.
+  * `productIds` - (array, optional) List of product IDs.
   * `description` - (text, optional) Not diplayed anywhere atm. Just for documentary purposes.
   * `imageUrl` - (text, optional) Link to the category image.
   * `externalUrl` - (text, optional)  Link to the category in the desktop shop.
 
+At least ONE OF `searchPhrase`, `filters` and `productIds` must be set.
+
+`searchPhrase` and `filters` may be used either alone or together,
+but both must not be combined with `productIds`.
+
 ### Examples
+
+#### Searh for products by the search phrase "Smartphone":
+```json
+{
+  "smartCategories": [
+    {
+      "id": "smartSearchSmartphone",
+      "name": "SALE",
+      "searchPhrase": "Smartphone"
+    }
+  ]
+}
+```
 
 #### All products that are currently on sale:
 ```json
 {
   "smartCategories": [
     {
-      "id": "Sale",
+      "id": "smartSale",
       "name": "SALE",
       "filters": {
         "only_discounted": true

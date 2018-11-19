@@ -37,11 +37,17 @@
       "description": "If the ID of a smart category is given, gets the corresponding product IDs.",
       "hooks": ["shopgate.catalog.getProducts.v1:before"],
       "input": [
-        { "key": "categoryId" }
+        { "key": "categoryId" },
+        { "key": "searchPhrase", "optional": true },
+        { "key": "filters", "optional": true },
+        { "key": "productIds", "optional": true }
       ],
       "output": [
         { "key": "categoryId" },
-        { "key": "filters" }
+        { "key": "searchPhrase", "optional": true },
+        { "key": "filters", "optional": true },
+        { "key": "productIds", "optional": true },
+        { "key": "sort", "optional": true }
       ]
     }
   ]
