@@ -17,7 +17,8 @@ Set the following values in your Shopgate Connect Admin:
   * `productIds` - (array, optional) List of product IDs.
   * `description` - (text, optional) Not diplayed anywhere atm. Just for documentary purposes.
   * `imageUrl` - (text, optional) Link to the category image.
-  * `externalUrl` - (text, optional)  Link to the category in the desktop shop.
+  * `externalUrl` - (text, optional) Link to the category in the desktop shop.
+  * `hideFromTree` - (true/false, optional, default: false) Don't show the smart category in the category tree.
 
 At least ONE OF `searchPhrase`, `filters` and `productIds` must be set.
 
@@ -26,14 +27,15 @@ but both must not be combined with `productIds`.
 
 ### Examples
 
-#### Searh for products by the search phrase "Smartphone":
+#### Searh for products by the search phrase "Smartphone", hidden from category tree:
 ```json
 {
   "smartCategories": [
     {
       "id": "smartSearchSmartphone",
       "name": "SALE",
-      "searchPhrase": "Smartphone"
+      "searchPhrase": "Smartphone",
+      "hideFromTree": true
     }
   ]
 }
