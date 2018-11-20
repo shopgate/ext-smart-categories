@@ -14,14 +14,11 @@ module.exports = async (context, input) => {
   }
   if (smartCategory.searchPhrase) {
     result.searchPhrase = smartCategory.searchPhrase;
-  }
-  if (smartCategory.filters) {
-    result.filters = input.filters || {}
-    result.filters = { ...result.filters, ...smartCategory.filters };
-  }
-  if (smartCategory.productIds) {
-    result.productIds = smartCategory.productIds;
-    result.sort = null
+  } else if (!input.searchPhrase && !input.filters) {
+    // We can't override the "filters" input of the getFilters pipeline in this hook,
+    // because "filters" is both in the input and output of the pipeline, but with different IDs.
+    // So in case, we have just a categoryId in the input, let's just get all filters.
+    result.searchPhrase = '*'
   }
   
   return result

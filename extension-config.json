@@ -22,7 +22,7 @@
   ],
   "steps": [
     {
-      "path": "extension/lib/addSmartCategories.js",
+      "path": "extension/lib/hooks/getRootCategories-after-addSmartCategories.js",
       "description": "Adds the smart categories to the result of the getRootCategories pipeline.",
       "hooks": ["shopgate.catalog.getRootCategories.v1:after"],
       "input": [
@@ -33,8 +33,8 @@
       ]
     },
     {
-      "path": "extension/lib/getSmartCategoryFilters.js",
-      "description": "If the ID of a smart category is given, gets the corresponding product IDs.",
+      "path": "extension/lib/hooks/getProducts-before-getSmartCategoryInputs.js",
+      "description": "If the ID of a smart category is given, replaces the input with the configured searchPhrase/filters/productIds.",
       "hooks": ["shopgate.catalog.getProducts.v1:before"],
       "input": [
         { "key": "categoryId" },
@@ -48,6 +48,20 @@
         { "key": "filters", "optional": true },
         { "key": "productIds", "optional": true },
         { "key": "sort", "optional": true }
+      ]
+    },
+    {
+      "path": "extension/lib/hooks/getFilters-before-getSmartCategoryInputs.js",
+      "description": "If the ID of a smart category is given, replaces the input with the configured searchPhrase/filters/productIds.",
+      "hooks": ["shopgate.catalog.getFilters.v1:before"],
+      "input": [
+        { "key": "categoryId" },
+        { "key": "searchPhrase", "optional": true },
+        { "key": "filters", "optional": true }
+      ],
+      "output": [
+        { "key": "categoryId" },
+        { "key": "searchPhrase", "optional": true }
       ]
     }
   ]
