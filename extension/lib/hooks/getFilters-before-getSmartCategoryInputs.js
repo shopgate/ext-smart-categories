@@ -1,16 +1,16 @@
 
 module.exports = async (context, input) => {
   if (!input.categoryId || !context.config.smartCategories) {
-    return input
+    return
   }
-  
+
   const smartCategory = context.config.smartCategories.find(category => category.id === input.categoryId)
   if (!smartCategory) {
-    return input
+    return
   }
-  
+
   const result = {
-    categoryId: null,
+    categoryId: null
   }
   if (smartCategory.searchPhrase) {
     result.searchPhrase = smartCategory.searchPhrase;
@@ -20,6 +20,6 @@ module.exports = async (context, input) => {
     // So in case, we have just a categoryId in the input, let's just get all filters.
     result.searchPhrase = '*'
   }
-  
+
   return result
 }

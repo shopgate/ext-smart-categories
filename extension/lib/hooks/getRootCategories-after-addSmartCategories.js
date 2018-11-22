@@ -1,9 +1,11 @@
 
-module.exports = async (context, input) => {
-  if (!context.config.smartCategories) {
-    return input
+module.exports = async ({ config }, { categories } ) => {
+  if (!config.smartCategories) {
+    return
   }
-  context.config.smartCategories
+
+  const result = { categories: [ ...categories ] }
+  config.smartCategories
     .filter(categoryConfig => !categoryConfig.hideFromTree)
     .forEach(categoryConfig => {
       let category = {
@@ -24,15 +26,15 @@ module.exports = async (context, input) => {
         children: []
       }
       if (categoryConfig.beforeId) {
-        const index = input.categories.findIndex(c => c.id === categoryConfig.beforeId)
-        input.categories.splice(index, 0, category)
+        const index = result.categories.findIndex(c => c.id === categoryConfig.beforeId)
+        result.categories.splice(index, 0, category)
       } else if (categoryConfig.afterId) {
-        const index = input.categories.findIndex(c => c.id === categoryConfig.afterId)
-        input.categories.splice(index + 1, 0, category)
+        const index = result.categories.findIndex(c => c.id === categoryConfig.afterId)
+        result.categories.splice(index + 1, 0, category)
       } else {
-        input.categories.push(category)
+        result.categories.push(category)
       }
     })
 
-  return input
+  return result
 }

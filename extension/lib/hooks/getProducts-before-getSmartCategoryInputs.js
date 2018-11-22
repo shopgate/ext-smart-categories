@@ -1,16 +1,16 @@
 
 module.exports = async (context, input) => {
   if (!input.categoryId || !context.config.smartCategories) {
-    return input
+    return
   }
-  
+
   const smartCategory = context.config.smartCategories.find(category => category.id === input.categoryId)
   if (!smartCategory) {
-    return input
+    return
   }
-  
+
   const result = {
-    categoryId: null,
+    categoryId: null
   }
   if (smartCategory.searchPhrase) {
     result.searchPhrase = smartCategory.searchPhrase;
@@ -23,8 +23,6 @@ module.exports = async (context, input) => {
     result.productIds = smartCategory.productIds;
     result.sort = null
   }
-  
-  console.log('result: ', result)
-  
+
   return result
 }

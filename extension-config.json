@@ -29,7 +29,7 @@
         { "key": "categories" }
       ],
       "output": [
-        { "key": "categories" }
+        { "key": "categories", "optional": true }
       ]
     },
     {
@@ -43,7 +43,7 @@
         { "key": "productIds", "optional": true }
       ],
       "output": [
-        { "key": "categoryId" },
+        { "key": "categoryId", "optional": true },
         { "key": "searchPhrase", "optional": true },
         { "key": "filters", "optional": true },
         { "key": "productIds", "optional": true },
@@ -60,7 +60,7 @@
         { "key": "filters", "optional": true }
       ],
       "output": [
-        { "key": "categoryId" },
+        { "key": "categoryId", "optional": true },
         { "key": "searchPhrase", "optional": true }
       ]
     }
