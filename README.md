@@ -19,6 +19,8 @@ Set the following values in your Shopgate Connect Admin:
   * `imageUrl` - (text, optional) Link to the category image.
   * `externalUrl` - (text, optional) Link to the category in the desktop shop.
   * `hideFromTree` - (true/false, optional, default: false) Don't show the smart category in the category tree.
+  * `beforeId` - (text/number, optional) ID of a (non-smart) category this one should be inserted before.
+  * `afterId` - (text/number, optional) ID of a (non-smart) category this one should be inserted after.
 
 At least ONE OF `searchPhrase`, `filters` and `productIds` must be set.
 
