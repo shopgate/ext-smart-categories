@@ -33,7 +33,7 @@
       ]
     },
     {
-      "path": "extension/lib/hooks/getProducts-before-getSmartCategoryInputs.js",
+      "path": "extension/lib/hooks/getProducts-before-setSmartCategoryInputs.js",
       "description": "If the ID of a smart category is given, replaces the input with the configured searchPhrase/filters/productIds.",
       "hooks": ["shopgate.catalog.getProducts.v1:before"],
       "input": [
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "path": "extension/lib/hooks/getFilters-before-getSmartCategoryInputs.js",
+      "path": "extension/lib/hooks/getFilters-before-setSmartCategoryInputs.js",
       "description": "If the ID of a smart category is given, replaces the input with the configured searchPhrase/filters/productIds.",
       "hooks": ["shopgate.catalog.getFilters.v1:before"],
       "input": [
