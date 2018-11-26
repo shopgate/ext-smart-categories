@@ -1,5 +1,6 @@
+'use strict'
 
-module.exports = async ({ config }, { categories } ) => {
+module.exports = async ({ config }, { categories }) => {
   if (!config.smartCategories) {
     return
   }

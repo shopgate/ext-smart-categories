@@ -1,3 +1,4 @@
+'use strict'
 
 module.exports = async (context, input) => {
   if (!input.categoryId || !context.config.smartCategories) {
