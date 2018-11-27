@@ -1,8 +1,8 @@
 const chai = require('chai')
 
-const getSmartCategoryFilters = require('./../../lib/getSmartCategoryFilters')
+const setSmartCategoryFilters = require('../../../lib/hooks/getProducts-before-setSmartCategoryInputs')
 
-describe('getSmartCategoryFilters', async () => {
+describe('setSmartCategoryFilters', async () => {
   const context = {
     config: {
       smartCategories: [
@@ -59,7 +59,7 @@ describe('getSmartCategoryFilters', async () => {
 
   it('should remove categoryId if it corresponds to a smart category and add the corresponding filters', async () => {
     for (var i = 0; i < context.config.smartCategories.length; i++) {
-      const result = await getSmartCategoryFilters(context, { categoryId: context.config.smartCategories[i].id })
+      const result = await setSmartCategoryFilters(context, { categoryId: context.config.smartCategories[i].id })
       chai.assert.isNull(result.categoryId)
       chai.assert.deepEqual(result.filters, context.config.smartCategories[i].filters)
       chai.assert.deepEqual(result.searchPhrase, context.config.smartCategories[i].searchPhrase)
@@ -67,15 +67,14 @@ describe('getSmartCategoryFilters', async () => {
     }
   })
 
-  it("should pass through the categoryId if it's not a smart category ", async () => {
-    const result = await getSmartCategoryFilters(context, { categoryId: 'someNonSmartCategoryId' })
-    chai.assert.deepEqual(result.categoryId, 'someNonSmartCategoryId')
-    chai.assert.isUndefined(result.filters)
+  it("should not pass through the categoryId if it's not a smart category ", async () => {
+    const result = await setSmartCategoryFilters(context, { categoryId: 'someNonSmartCategoryId' })
+    chai.assert.isUndefined(result)
   })
 
   it('should not fail if there is no smartCategories configuration ', async () => {
     let input = { categoryId: 'someId' }
-    const result = await getSmartCategoryFilters({ config: {} }, input)
-    chai.assert.deepEqual(result, input)
+    const result = await setSmartCategoryFilters({ config: {} }, input)
+    chai.assert.isUndefined(result)
   })
 })

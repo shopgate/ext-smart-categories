@@ -1,6 +1,6 @@
 const chai = require('chai')
 
-const addSmartCategories = require('./../../lib/addSmartCategories')
+const addSmartCategories = require('../../../lib/hooks/getRootCategories-after-addSmartCategories')
 
 describe('addSmartCategories', async () => {
   const context = {
@@ -111,6 +111,6 @@ describe('addSmartCategories', async () => {
   it('should not fail if there is no smartCategories configuration ', async () => {
     const input = { categories: [{ id: '1' }, { id: '2' }] }
     const result = await addSmartCategories({ config: {} }, input)
-    chai.assert.deepEqual(result, input)
+    chai.assert.deepEqual(result, undefined)
   })
 })

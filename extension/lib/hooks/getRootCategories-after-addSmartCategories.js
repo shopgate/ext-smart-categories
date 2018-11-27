@@ -7,7 +7,7 @@ module.exports = async ({ config }, { categories }) => {
 
   const result = { categories: [ ...categories ] }
   config.smartCategories
-    .filter(categoryConfig => !categoryConfig.hideFromTree)
+    .filter(categoryConfig => categoryConfig.showInCategoryTree !== false)
     .forEach(categoryConfig => {
       let category = {
         id: categoryConfig.id,
