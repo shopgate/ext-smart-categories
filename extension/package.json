@@ -1,6 +1,6 @@
 {
   "name": "smart-categories",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Support for smart categories, like a \"sale\" category that automatically contains all products that are on sale for example.",
   "main": "index.js",
   "scripts": {
