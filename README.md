@@ -8,6 +8,22 @@ Adds support for smart categories, like a "sale" category that automatically con
 
 ## Configuration
 
+Add the Smart Categories extension to your Shopgate Connect deployment config. Also make sure that you have the Shopgate Products extension installed in version 1.4.6 or above.
+
+```
+(...)
+    {
+        "id": "@shopgate\/products",
+        "version": "1.4.6"
+    },
+    {
+        "id": "@shopgate\/smart-categories",
+        "version": "1.1.0"
+    }
+(...)
+```
+
+
 Set the following values in your Shopgate Connect Admin:
 * `smartCategories` - (array of objects) each containing the following properties
   * `id` - (text/number, required) Unique ID for the category.
@@ -35,7 +51,7 @@ but both must not be combined with `productIds`.
   "smartCategories": [
     {
       "id": "smartSearchSmartphone",
-      "name": "SALE",
+      "name": "Smartphones",
       "searchPhrase": "Smartphone",
       "showInCategoryTree": false
     }
