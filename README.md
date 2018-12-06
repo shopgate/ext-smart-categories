@@ -129,6 +129,19 @@ but both must not be combined with `productIds`.
 }
 ```
 
+#### The products with the IDs 123, 456 and 789:
+```json
+{
+  "smartCategories": [
+    {
+      "id": "smartProductIds",
+      "name": "Three Products",
+      "productIds": ["123", "456", "789"]
+    }
+  ]
+}
+```
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) file for more information.
